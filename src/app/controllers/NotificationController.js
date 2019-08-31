@@ -20,6 +20,19 @@ class NotificationController {
       .limit(20);
     return res.json({ notifications });
   }
+
+  async update(req, res) {
+    // findByIdAndUpdate methd
+    // 1 - Id
+    // 2 - What will be updated
+    // 3 - Return modified data
+    const notification = await Notification.findByIdAndUpdate(
+      req.params.id,
+      { read: true },
+      { new: true }
+    );
+    return res.json({ notification });
+  }
 }
 
 export default new NotificationController();
