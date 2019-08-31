@@ -62,6 +62,14 @@ class AppointmentController {
         error: 'You can only create appointments with providers',
       });
     }
+    /**
+     * Check if provider and user are the same
+     */
+    if (provider_id === req.userId) {
+      return res
+        .status(400)
+        .json({ error: 'You can not create appointments with yourself' });
+    }
     /*
     Check if date is valid not past
     startHour change to oclock 19:30 --> 19:00
@@ -105,7 +113,7 @@ class AppointmentController {
     // 3 - traduz para pt-br
     const formattedDate = format(
       hourStart,
-      "'dia 'dd 'de ' MMMM', às' H:mm'h'",
+      "'dia 'dd 'de' MMMM', às' H:mm'h'",
       { locale: pt }
     );
 
