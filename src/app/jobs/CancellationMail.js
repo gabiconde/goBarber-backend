@@ -8,8 +8,6 @@ class CancellationMail {
   }
 
   async handle({ data }) {
-    console.log('Executou');
-
     const { appointment } = data;
     await Mail.sendMail({
       to: `${appointment.provider.name} <${appointment.provider.email}>`,
