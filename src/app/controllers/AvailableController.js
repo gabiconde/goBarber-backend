@@ -7,7 +7,7 @@ import {
   format,
   isAfter,
 } from 'date-fns';
-import Op from 'sequelize';
+import { Op } from 'sequelize';
 import Appointment from '../models/Appointment';
 
 class AvailableController {
